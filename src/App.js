@@ -80,12 +80,12 @@ function App() {
   ];
 
   const socialLinks = [
-    { icon: 'fab fa-spotify', url: 'https://open.spotify.com/your-spotify-link' },
-    { icon: 'fab fa-apple', url: 'https://music.apple.com/your-apple-music-link' },
-    { icon: 'fab fa-amazon', url: 'https://music.amazon.com/your-amazon-music-link' },
-    { icon: 'fab fa-youtube', url: 'https://www.youtube.com/your-youtube-channel' },
-    { icon: 'fab fa-instagram', url: 'https://www.instagram.com/your-instagram' },
-    { icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@your-tiktok' },
+    { icon: 'fab fa-spotify', url: 'https://open.spotify.com/artist/2mmRWJ8CNKojZBkT7bDd5Q' },
+    { icon: 'fab fa-itunes-note', url: 'https://music.apple.com/us/artist/mj-wood/1535278961' },
+    { icon: 'fab fa-amazon', url: 'https://www.amazon.com/music/player/artists/B01MUFEVT7/mj-wood' },
+    { icon: 'fab fa-youtube', url: 'https://www.youtube.com/channel/UCI7PKRN98vLqH5HW2Lp2MxQ' },
+    { icon: 'fab fa-instagram', url: 'https://www.instagram.com/mjwood_tunes/' },
+    { icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@mjwood_tunes' },
     /*{ icon: 'fa-brands fa-x-twitter', url: 'https://twitter.com/your-twitter' },*/
   ];
 
