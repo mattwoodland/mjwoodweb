@@ -340,6 +340,7 @@ body {
 @media (max-width: 768px) {
   .social-links {
     padding: 20px 0;
+    margin-bottom: 20px;
   }
 
   .social-icon {
