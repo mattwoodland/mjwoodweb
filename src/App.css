@@ -1,3 +1,10 @@
+body {
+  background-color: black;
+  color: white; /* This ensures text is visible on the black background */
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -14,18 +21,63 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: black; /* Changed to black */
+  height: 60px; /* Changed from 80px to 60px */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.band-logo {
+  height: 40px; /* Adjusted to fit within the 60px header */
+  width: auto;
+  object-fit: contain;
+}
+
+.song-grid-container {
+  max-width: 1200px; /* Adjust this value as needed */
+  margin: 60px auto 0; /* Changed to 60px to remove gap */
+  border-radius: 30px; /* Increased border radius for more noticeable rounding */
+  overflow: hidden; /* This will mask the corners of edge images */
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0; /* Removed gap between images */
+  padding: 0;
+  margin-top: 0; /* Ensure no gap between grid and container */
+  max-width: 1200px; /* Adjust this value as needed */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.song-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* This ensures the image covers the square area */
+}
+
+@media (max-width: 1024px) {
+  .song-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .song-grid {
+    grid-template-columns: 1fr; /* Change to a single column */
+  }
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +88,322 @@
     transform: rotate(360deg);
   }
 }
+
+.song-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.song-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.song-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.song-name {
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.song-item:hover img {
+  filter: brightness(50%);
+}
+
+.song-item:hover .song-info {
+  opacity: 1;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal-content {
+  background-color: #121212;
+  border-radius: 30px;
+  width: 80%;
+  max-width: 1200px;
+  height: 84vh;
+  max-height: 800px;
+  position: relative;
+  top: 0px;
+  display: flex;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-info {
+  width: 50%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  color: white;
+  text-align: left;
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    height: 90vh;
+    top: -10px;
+    flex-direction: column;
+  }
+
+  .modal-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* This creates a square aspect ratio */
+    position: relative;
+  }
+
+  .modal-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-info {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+  }
+
+  .modal-info h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+
+  .modal-info p {
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.song-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.song-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.song-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.song-name {
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.song-item:hover img {
+  filter: brightness(50%);
+}
+
+.song-item:hover .song-info {
+  opacity: 1;
+}
+
+.spotify-button {
+  background-color: #1DB954; /* Spotify green */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 33%; /* Set the width to one-third */
+  min-width: 150px; /* Ensure a minimum width for smaller screens */
+}
+
+.spotify-button:hover {
+  background-color: #1ed760; /* Lighter Spotify green */
+}
+
+.spotify-button i {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .spotify-button {
+    margin-top: 15px;
+    padding: 8px 16px;
+    width: 50%; /* Slightly wider on mobile for better touch targets */
+    min-width: 120px;
+  }
+
+  .spotify-button i {
+    margin-right: 8px;
+    font-size: 1.1em;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  background-color: black;
+}
+
+.social-icon {
+  color: #4169E1; /* Royal Blue */
+  font-size: 33.6px;
+  margin: 0 30px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #EB0558; /* New hover color */
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .social-links {
+    padding: 20px 0;
+  }
+
+  .social-icon {
+    font-size: 28px;
+    margin: 0 20px;
+  }
+}
+
+.fa-x-twitter:before {
+  content: "\e61b";
+  font-family: "Font Awesome 6 Brands";
+}
+
+/* ... (existing styles) ... */
+
+.modal-content {
+  /* ... (existing styles) ... */
+  position: relative;
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1002; /* Ensure it's above other modal content */
+}
+
+.modal-nav:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-prev {
+  left: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.modal-next {
+  right: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  .modal-nav {
+    top: auto;
+    bottom: 50%; /* Position at the middle of the image */
+    transform: translateY(50%);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .modal-prev {
+    left: 10px; /* Slight offset from the edge */
+  }
+
+  .modal-next {
+    right: 10px; /* Slight offset from the edge */
+  }
+}
+
+/* ... (other styles remain unchanged) ... */
