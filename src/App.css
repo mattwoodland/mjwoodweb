@@ -183,9 +183,9 @@ body {
 /* Mobile devices */
 @media (max-width: 768px) {
   .modal-content {
-    width: 95%;
+    width: 90%;
     height: 90vh;
-    top: -10px;
+    top: 0px;
     flex-direction: column;
   }
 
@@ -208,18 +208,20 @@ body {
   .modal-info {
     width: 100%;
     height: auto;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 10px;
     overflow-y: auto; /* Allow scrolling if content overflows */
   }
 
   .modal-info h2 {
     font-size: 2em;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
+    margin-top: -.75em;
   }
 
   .modal-info p {
-    font-size: 1em;
-    margin-bottom: 8px;
+    font-size: .9em;
+    margin-bottom: 0px;
   }
 }
 
@@ -263,7 +265,7 @@ body {
   color: white;
   text-align: center;
   font-size: 1.2em;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .song-item:hover img {
@@ -373,6 +375,7 @@ body {
 
 .modal-nav:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  /*color: #4169E1;*/
 }
 
 .modal-prev {
@@ -398,12 +401,51 @@ body {
   }
 
   .modal-prev {
-    left: 10px; /* Slight offset from the edge */
+    left: 0px; /* Slight offset from the edge */
   }
 
   .modal-next {
-    right: 10px; /* Slight offset from the edge */
+    right: 0px; /* Slight offset from the edge */
   }
 }
 
 /* ... (other styles remain unchanged) ... */
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Dim circle background */
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  z-index: 1003; /* Ensure it's above other modal content */
+  padding: 0;
+  line-height: 1;
+  width: 40px; /* Set width and height for a perfect circle */
+  height: 40px;
+  border-radius: 50%; /* Make it circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-close:hover {
+  background-color: rgba(235, 5, 88, 0.8); /* #EB0558 with some transparency */
+  color: white;
+}
+
+/* Adjust for mobile */
+@media (max-width: 768px) {
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    width: 32px; /* Slightly smaller on mobile */
+    height: 32px;
+  }
+}
+
+/* ... (rest of the styles) ... */

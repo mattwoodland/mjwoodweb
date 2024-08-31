@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       number: 8, 
       name: "Kraken", 
       writtenBy: "Matt Woodland, Josh Woodland",
-      producedBy: "Matt Woodland,Josh Woodland",
+      producedBy: "Matt Woodland, Josh Woodland",
       engineeredBy: "Josh Woodland",
       releaseDate: "Oct 20 2023",
       spotifyLink: "https://open.spotify.com/track/5U6rOKGZMR8i7JF2GcmePv?si=0fed014279824ec9"
@@ -105,6 +105,25 @@ function App() {
     setSelectedSongIndex((prevIndex) => (prevIndex - 1 + songData.length) % songData.length);
   };
 
+  // Add this useEffect hook
+  useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    // Add event listener when the modal is open
+    if (selectedSongIndex !== null) {
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    // Cleanup function to remove the event listener
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [selectedSongIndex]); // Re-run effect when selectedSongIndex changes
+
   return (
     <div className="App">
       <header className="App-header">
@@ -132,6 +151,9 @@ function App() {
       {selectedSongIndex !== null && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              <i className="fas fa-times"></i>
+            </button>
             <div className="modal-nav modal-prev" onClick={prevSong}>
               <i className="fas fa-chevron-left"></i>
             </div>
