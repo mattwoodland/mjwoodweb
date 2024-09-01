@@ -268,11 +268,17 @@ body {
 }
 
 .play-container {
-  /*background-color: #232323;*/
-  margin-top: 20px;
+  background-color: #232323;
+  margin-top: 10px;
   transition: all 0.3s ease;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 0;
+  width: 50%; /* Match initial button width on desktop */
+  max-width: 300px; /* Add a max-width to prevent it from getting too wide */
 }
 
 .play-button {
@@ -280,161 +286,96 @@ body {
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
-  border: 2px solid transparent;
+  border: none;
   font-weight: bold;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 50%;
-  max-width: 300px;
-  position: relative;
-  overflow: visible;
+  width: 100%; /* Take full width of container */
+  height: 100%;
 }
 
-.play-button span {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  justify-content: center;
-}
-
-.play-button i {
-  margin-right: 10px; /* Add space between icon and text */
-}
-
-.play-container.expanded .play-button {
+.play-container.expanded {
   width: 70%;
-  max-width: none;
-}
-
-.play-button::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid transparent;
-  border-radius: 25px;
-  pointer-events: none;
-}
-
-.play-container.expanded .play-button::before {
-  animation: snakeBorder 1.5s linear forwards;
-}
-
-@keyframes snakeBorder {
-  0%, 100% {
-    border-color: transparent;
-    border-top-color: #4169E1;
-    clip-path: inset(0 50% 100% 50%);
-  }
-  12.5% {
-    border-top-color: #4169E1;
-    border-right-color: #4169E1;
-    clip-path: inset(0 0 100% 50%);
-  }
-  25% {
-    border-right-color: #4169E1;
-    clip-path: inset(0 0 100% 0);
-  }
-  37.5% {
-    border-right-color: #4169E1;
-    border-bottom-color: #4169E1;
-    clip-path: inset(0 0 50% 0);
-  }
-  50% {
-    border-bottom-color: #4169E1;
-    clip-path: inset(0 0 0 50%);
-  }
-  62.5% {
-    border-bottom-color: #4169E1;
-    border-left-color: #4169E1;
-    clip-path: inset(50% 100% 0 0);
-  }
-  75% {
-    border-left-color: #4169E1;
-    clip-path: inset(100% 100% 0 0);
-  }
-  87.5% {
-    border-left-color: #4169E1;
-    border-top-color: #4169E1;
-    clip-path: inset(100% 50% 0 0);
-  }
 }
 
 .platform-icons {
-  display: flex;
+  display: none;
   justify-content: center;
-  margin-top: 15px;
+  align-items: center;
   width: 100%;
-  max-height: 0;
-  overflow: visible;
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
-  opacity: 0;
+  padding: 15px 0;
 }
 
 .play-container.expanded .platform-icons {
-  max-height: 40px;
-  opacity: 1;
-  margin-top: 10px;
+  display: flex;
 }
 
 .platform-icon {
   color: white;
-  font-size: 1.5em;
+  font-size: 1.8em; /* Increase from 1.5em to 1.8em (20% larger) */
   margin: 0 12px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 48px; /* Increase from 40px to 48px (20% larger) */
+  height: 48px; /* Increase from 40px to 48px (20% larger) */
   text-decoration: none;
 }
 
-.platform-icon i {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.platform-icon:hover {
-  transform: scale(1.2);
-}
-
-.platform-icon.spotify:hover {
-  color: #1DB954; /* Spotify green */
-}
-
-.platform-icon.apple-music:hover {
-  color: #FA57C1; /* Apple Music pink */
-}
-
-.platform-icon.youtube-music:hover {
-  color: #FF0000; /* YouTube red */
-}
-
-.platform-icon.amazon-music:hover {
-  color: #00A8E1; /* Amazon Music blue */
-}
+/* Platform icon hover colors */
+.platform-icon.spotify:hover { color: #1DB954; }
+.platform-icon.apple-music:hover { color: #FA57C1; }
+.platform-icon.youtube-music:hover { color: #FF0000; }
+.platform-icon.amazon-music:hover { color: #00A8E1; }
 
 /* Mobile devices */
 @media (max-width: 768px) {
-  .play-button {
-    width: 60%;
-    max-width: none;
+  .play-container {
+    width: 60%; /* Match initial button width on mobile */
+    margin-top: 20px; /* Add 10px margin on top for mobile */
+    position: relative; /* Ensure it's in the normal document flow */
+    left: auto; /* Reset any left positioning */
+    bottom: auto; /* Reset any bottom positioning */
+    transform: none; /* Reset any transforms */
   }
 
-  .play-container.expanded .play-button {
-    width: 80%;
+  .play-container.expanded {
+    width: 100%;
+  }
+
+  .play-button {
+    padding: 8px 16px; /* Slightly reduce padding for mobile */
+    font-size: 1.04em; /* Reduce font size by 20% (1.3em * 0.8) */
+  }
+
+  .play-button i {
+    font-size: 0.8em; /* Make play icon 20% smaller */
+  }
+
+  .platform-icons {
+    padding: 10px 0; /* Slightly reduce padding for mobile */
+  }
+
+  .platform-icon {
+    font-size: 1.56em; /* Reduce size by 20% (1.95em * 0.8) */
+    width: 41.6px; /* Reduce width by 20% (52px * 0.8) */
+    height: 41.6px; /* Reduce height by 20% (52px * 0.8) */
+  }
+}
+
+/* Ensure the modal content is scrollable on mobile */
+@media (max-width: 768px) {
+  .modal-content {
+    overflow-y: auto;
+    max-height: 90vh; /* Limit the height to 90% of the viewport height */
+  }
+
+  .modal-info {
+    padding-bottom: 20px; /* Add some bottom padding to ensure play-container is visible */
   }
 }
 

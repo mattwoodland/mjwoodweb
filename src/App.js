@@ -205,10 +205,7 @@ function App() {
                   className="play-button"
                   onClick={togglePlayExpansion}
                 >
-                  <span>
-                    <i className="fas fa-play"></i>
-                     {songData[selectedSongIndex].name}
-                  </span>
+                  {!isPlayExpanded && <i className="fas fa-play"></i>}
                   {isPlayExpanded && (
                     <div className="platform-icons">
                       <a href={songData[selectedSongIndex].spotifyLink} target="_blank" rel="noopener noreferrer" className="platform-icon spotify">
